@@ -1,5 +1,6 @@
 # register-obstruction
 
+[![tests](https://github.com/kanishkpaul/register-obstruction/actions/workflows/ci.yml/badge.svg)](https://github.com/kanishkpaul/register-obstruction/actions/workflows/ci.yml)
 [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 **Can "untranslatability" be measured — and does it predict where machine translation quietly fails?**
