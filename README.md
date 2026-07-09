@@ -1,6 +1,13 @@
 # register-obstruction
 
+[![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 **Can "untranslatability" be measured — and does it predict where machine translation quietly fails?**
+
+> Part of a research series — see also
+> [arc-agi3-world-models](https://github.com/kanishkpaul/arc-agi3-world-models) and
+> [butterflygate](https://github.com/kanishkpaul/butterflygate) ·
+> write-ups at [kanishkpaul.com/research](https://kanishkpaul.com/research)
 
 A fully-local, zero-budget empirical study of a specific, hard case:
 the three-way honorific **register** distinction (formal / familiar / intimate)
@@ -96,6 +103,32 @@ Registered *before* running the analysis, reported either way:
 
 **Failure of prediction 3 kills the theory.** That criterion is fixed in
 advance; the paper reports the outcome regardless of direction.
+
+## Try the interface
+
+The label space, cue record, and classifier protocol are public
+(`src/register/core.py`), plus a deliberately minimal **pronoun-only** demo
+classifier — textbook honorifics (আপনি/তুমি/তুই, आप/तुम/तू), *not* the validated
+morphological instrument. Pure Python, no deps to run it:
+
+```bash
+pip install -e ".[dev]"
+pytest -q                  # 5 passing interface tests
+python examples/demo.py
+```
+
+```
+[hi]
+  FORMAL     (cue: आप)   आप कैसे हैं?
+  FAMILIAR   (cue: तुम)   तुम कहाँ जा रहे हो?
+  INTIMATE   (cue: तू)    तू क्या कर रहा है?
+  NEUTRAL    (cue: —)     आज बारिश होगी।
+```
+
+The demo returns NEUTRAL when register lives only in the verb, not the pronoun —
+which is exactly what the withheld morphological instrument exists to catch. See
+[`docs/methodology.md`](docs/methodology.md) for the study design and metric
+definitions.
 
 ## What's public vs. withheld
 

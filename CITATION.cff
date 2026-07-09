@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you reference this work, please cite it as below."
+title: "Register Obstruction: quantifying honorific untranslatability in Bengali/Hindi MT"
+authors:
+  - family-names: Paul
+    given-names: Kanishk
+repository-code: "https://github.com/kanishkpaul/register-obstruction"
+url: "https://kanishkpaul.com/research"
+license: MIT
