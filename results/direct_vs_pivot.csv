@@ -1,0 +1,11 @@
+system,path,n,survival_pct,flip_pct,neutralization_pct,mean_chrf
+IndicTrans2,direct,256,38.672,43.359,17.969,29.590
+IndicTrans2,pivot,256,39.453,43.750,16.797,30.165
+NLLB,direct,256,36.719,46.484,16.797,29.661
+NLLB,pivot,256,34.375,43.359,22.266,30.106
+Gemma-3-12B,direct,256,62.500,19.141,18.359,27.673
+Gemma-3-12B,pivot,256,40.625,43.750,15.625,28.645
+Llama-3.1-8B,direct,256,55.859,19.531,24.609,22.397
+Llama-3.1-8B,pivot,256,37.109,42.578,20.312,24.373
+Qwen3-8B,direct,256,53.906,27.344,18.750,24.416
+Qwen3-8B,pivot,256,37.109,42.969,19.922,24.004

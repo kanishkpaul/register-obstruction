@@ -1,8 +1,8 @@
 """register — public interface + an illustrative pronoun-only classifier.
 
-The validated morphological instrument (cue tables, verb-suffix rules, syncretism
-handling) and the contextual-fraction obstruction measurement are withheld
-pending publication. See the README.
+The validated morphological instrument (cue tables, verb-suffix rules, and
+syncretism handling) is withheld pending publication. The preregistered
+contextual-fraction measurement has not yet been run. See the README.
 """
 
 from .core import (

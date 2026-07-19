@@ -1,8 +1,9 @@
 # Methodology
 
-This documents the study design and the evaluation metrics. The obstruction
-measurement itself (the contextual-fraction linear program) and the validated
-classifier internals are withheld pending publication.
+This documents the study design and the evaluation metrics. The validated
+classifier internals are withheld pending publication. The proposed
+contextual-fraction linear program and correlation analysis have not yet been
+run; they remain preregistered future phases rather than withheld results.
 
 ## Pipeline
 
@@ -56,7 +57,9 @@ register) inflates neutralization/flip on `implicit` items specifically.
   (Claude), not by independent human annotation — a deliberate project decision.
   Reported precision therefore measures classifier-vs-LLM agreement, not
   human-verified ground truth. No claim of human validation is made. Every label
-  record is tagged with its annotator.
+  record is tagged with its annotator. The 309 frozen-item verification
+  decisions were also produced by Claude rather than the originally planned
+  native-speaker review.
 - **Pre-registration.** Predictions (including a fixed kill criterion for the
   headline correlation) are registered before the analysis is run and reported
   regardless of outcome.

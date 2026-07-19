@@ -13,18 +13,18 @@
 A fully-local, zero-budget empirical study of a specific, hard case:
 the three-way honorific **register** distinction (formal / familiar / intimate)
 that Bengali and Hindi mark grammatically but English does not. When a
-translation pipeline routes **Bn → English → Hi**, English acts as a
-register-destroying pivot — the system has to *guess* the honorific level on the
-way back out. This project quantifies how badly, per sentence, and tests whether
-that quantity predicts downstream failure.
+translation pipeline routes **Bn → English → Hi**, the English intermediate
+removes the overt grammatical signal and the system has to *guess* the
+honorific level on the way back out. Whether that causes additional loss beyond
+direct Bn → Hi translation is an empirical, model-dependent question.
 
-> **Status — method paper in preparation.** This is a public *showcase* of the
-> engineering and the research design. The novel measurement (a
-> cohomological-style *contextual-fraction* obstruction computed by linear
-> programming) and the frozen evaluation dataset are **held back until
-> arXiv / peer review** to preserve priority. What's here is enough to see how
-> the instrument is built and how the study is run — not enough to reproduce the
-> headline result ahead of the paper. See [What's public vs. withheld](#whats-public-vs-withheld).
+> **Status — active research preview.** Classifier validation and aggregate
+> direct-vs-pivot register-fidelity baselines are complete and public here. The
+> proposed cohomological-style *contextual-fraction* obstruction, its linear
+> program, and the correlation analysis have **not yet been run**. The central
+> obstruction hypothesis remains preregistered and untested. The frozen
+> sentences and instrument internals remain private pending a write-up. See
+> [What's public vs. not public](#whats-public-vs-not-public).
 
 ---
 
@@ -58,19 +58,39 @@ languages) — **passed**:
 | Bengali | 1.00 | 1.00 | 0.92 |
 | Hindi   | 1.00 | 0.96 | 1.00 |
 
-**Honest methodology note.** The validation labels above were produced by an
-LLM (Claude), not by independent human annotation — a deliberate project
-decision, disclosed here because it changes what the numbers mean: they measure
-*classifier-vs-LLM agreement*, not human-verified ground truth. The paper's
-methods section states this explicitly; no claim of human validation is made.
-(Human verification by a native Bengali speaker is part of the dataset-freeze
-step, which is in the withheld portion.)
+**Honest methodology note.** The validation labels above were produced by
+Claude, not by independent human annotation. The 309 frozen-item verification
+decisions were also produced by Claude, contrary to the original plan for a
+native-speaker review. The numbers measure *classifier-vs-LLM agreement*, not
+human-verified ground truth. Every private record is tagged with that
+provenance; no claim of human validation is made.
 
 A second finding surfaced during validation and is worth stating because it
 generalizes beyond this project: **Hindi present/progressive conjugation is
 syncretic** across 2nd-person-formal, 1st-plural, and 3rd-plural
 (`-ते हैं` / `-रहे हैं`), so Hindi carries structurally more register ambiguity
 than Bengali. Any register classifier — rule-based or learned — inherits this.
+
+## Aggregate direct-vs-pivot evidence
+
+Register survival on 256 implicit, register-bearing items:
+
+| system | direct Bn→Hi | pivot Bn→En→Hi | direct minus pivot |
+|---|---:|---:|---:|
+| IndicTrans2 | 38.67% | 39.45% | -0.78 pp |
+| NLLB | 36.72% | 34.38% | +2.34 pp |
+| Gemma 3 12B | 62.50% | 40.63% | +21.88 pp |
+| Llama 3.1 8B | 55.86% | 37.11% | +18.75 pp |
+| Qwen3 8B | 53.91% | 37.11% | +16.80 pp |
+
+Dedicated MT already loses most register information on the direct path; the
+English pivot adds little consistent damage for those two systems. All three
+general LLM translators show a large additional pivot penalty. The detailed
+aggregate CSVs, validation confusion counts, hashes, and limitations are in
+[`results/`](results/) and
+[`docs/evidence-and-limitations.md`](docs/evidence-and-limitations.md).
+
+These are register-fidelity baselines, **not obstruction scores**.
 
 ## Study design
 
@@ -103,7 +123,7 @@ Registered *before* running the analysis, reported either way:
    downstream register-inappropriateness of final outputs.
 
 **Failure of prediction 3 kills the theory.** That criterion is fixed in
-advance; the paper reports the outcome regardless of direction.
+advance; the analysis has not yet been run.
 
 ## Try the interface
 
@@ -114,8 +134,9 @@ morphological instrument. Pure Python, no deps to run it:
 
 ```bash
 pip install -e ".[dev]"
-pytest -q                  # 5 passing interface tests
+pytest -q                  # 6 passing tests
 python examples/demo.py
+python scripts/check_public_results.py
 ```
 
 ```
@@ -131,18 +152,19 @@ which is exactly what the withheld morphological instrument exists to catch. See
 [`docs/methodology.md`](docs/methodology.md) for the study design and metric
 definitions.
 
-## What's public vs. withheld
+## What's public vs. not public
 
-| Public here | Withheld until publication |
+| Public here | Not public here |
 |---|---|
-| Research design, study spec (this README) | The contextual-fraction obstruction method (LP formulation) |
-| Register-classifier **interface** + validation methodology | The classifier cue tables / internals (the working instrument) |
-| Phase structure, harness shape, model list | Frozen benchmark dataset + mined triples |
-| Qualitative direction of findings | Full per-path quantitative result tables + correlations |
+| Research design and preregistered predictions | The planned contextual-fraction LP implementation |
+| Register-classifier interface, aggregate validation metrics, and confusion counts | Classifier cue tables and morphological internals |
+| Aggregate direct-vs-pivot register-fidelity results | Frozen sentences, mined triples, and per-item outputs |
+| Private source commit and artifact hashes | Register-restoration system internals |
+| Explicit current phase status and limitations | Contextual-fraction scores and correlations, which have not yet been produced |
 
-If you're evaluating this for a role: happy to walk through the full method and
-current results under a conversation / NDA — the omissions here are about
-publication priority, not about hiding gaps.
+If you're evaluating this for a role: happy to walk through the private
+instrument and current results directly. Dataset and instrument omissions
+protect publication priority; unfinished analysis is labeled unfinished above.
 
 ## Author
 

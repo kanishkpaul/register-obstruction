@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "source": {
+    "repository": "kanishkpaul/Indic-cat",
+    "visibility": "private",
+    "commit": "e78345ecdd74abcbcf50c7c251065b5254ac23a8"
+  },
+  "validation": {
+    "bengali_reference_labels": 147,
+    "hindi_reference_labels": 150,
+    "reference_annotator": "llm-claude",
+    "independent_human_annotation": false,
+    "private_report_sha256": "07de29e8e8404cf05287aacd41b57b46ca9c88afb3afa5dd0f89dab07a414f74"
+  },
+  "frozen_set": {
+    "frozen_at_utc": "2026-07-06T10:54:29.408061+00:00",
+    "items": 309,
+    "register_items": 256,
+    "controls": 53,
+    "dropped_bad_joins": 28,
+    "verifier": "llm-claude",
+    "verified_by_human": false,
+    "content_freeze_sha256": "1c13508420157a70921e775a398e5eea83285d107946cd35c195acdb62bf2ac1",
+    "private_freeze_record_sha256": "a1e5aa3d9062c22ff08b538d462256125b2b1b64334f8eb56bea01379d409394"
+  },
+  "baseline_results": {
+    "condition": "implicit",
+    "register_items": 256,
+    "private_per_item_export_sha256": "184e261f5d931f115cc79079bab924dac5b6337487cd4af84f7c304c50376e72",
+    "private_report_sha256": "0d61090f4f9544f78d7982c7aa94d1b32a965ef0399bcfcdf7fbd4645a31ef68"
+  },
+  "release_boundary": {
+    "public": [
+      "aggregate validation metrics and confusion counts",
+      "aggregate direct-vs-pivot register-fidelity metrics",
+      "artifact hashes and methodology limitations"
+    ],
+    "withheld": [
+      "cue tables and morphological rules",
+      "frozen sentences and per-item outputs",
+      "contextual-fraction implementation",
+      "register-restoration system internals"
+    ]
+  }
+}

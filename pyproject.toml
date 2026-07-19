@@ -1,7 +1,7 @@
 [project]
 name = "register-obstruction"
 version = "0.1.0"
-description = "Interface + illustrative classifier for honorific-register untranslatability (Bn/Hi). Method + dataset withheld pending publication."
+description = "Honorific-register translation study for Bengali and Hindi, with public aggregate validation and direct-vs-pivot evidence."
 requires-python = ">=3.11"
 dependencies = []
 
