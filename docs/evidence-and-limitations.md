@@ -32,8 +32,10 @@ large additional pivot penalty. The effect is model-family dependent, not a
 universal fixed cost.
 
 These are register-fidelity baselines, not contextual-fraction obstruction
-scores. The contextual-fraction computation and its correlation with
-downstream failure have not been run.
+scores. The preregistered contextual-fraction predictor has since been tested
+privately and did not survive robustness analysis; it is treated as falsified
+for this pilot. Its implementation, item-level scores, detailed correlation
+tables, and unreleased figures remain outside this public evidence bundle.
 
 ## Provenance
 
@@ -54,6 +56,7 @@ versioned provenance and make later silent substitution detectable.
 ## Release boundary
 
 The release omits sentence text, per-item model outputs, cue tables,
-morphological suffix rules, the planned contextual-fraction implementation,
-and register-restoration system internals. Aggregate evidence is public so the
-claims visible in the README can be checked without exposing those materials.
+morphological suffix rules, the contextual-fraction implementation and detailed
+analysis, and register-restoration system internals. Aggregate evidence is
+public so the claims visible in the README can be checked without exposing
+those materials.
