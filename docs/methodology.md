@@ -1,9 +1,11 @@
 # Methodology
 
 This documents the study design and the evaluation metrics. The validated
-classifier internals are withheld pending publication. The proposed
-contextual-fraction linear program and correlation analysis have not yet been
-run; they remain preregistered future phases rather than withheld results.
+classifier internals are withheld pending publication. The preregistered
+contextual-fraction analysis has been run privately; its headline prediction
+did not survive robustness checks and is treated as a negative result for this
+pilot. The LP implementation, item-level scores, and detailed robustness
+analysis remain withheld pending the write-up.
 
 ## Pipeline
 
@@ -61,7 +63,7 @@ register) inflates neutralization/flip on `implicit` items specifically.
   decisions were also produced by Claude rather than the originally planned
   native-speaker review.
 - **Pre-registration.** Predictions (including a fixed kill criterion for the
-  headline correlation) are registered before the analysis is run and reported
-  regardless of outcome.
+  headline correlation) were registered before the analysis. The high-level
+  negative outcome is reported regardless of that outcome.
 - **No tuning toward predictions.** Fixes to the instrument are validated on
   fresh, non-overlapping samples — never on the sample that motivated the fix.

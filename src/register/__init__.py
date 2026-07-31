@@ -2,7 +2,9 @@
 
 The validated morphological instrument (cue tables, verb-suffix rules, and
 syncretism handling) is withheld pending publication. The preregistered
-contextual-fraction measurement has not yet been run. See the README.
+contextual-fraction predictor has been tested privately and did not survive
+robustness analysis; implementation and detailed results remain withheld. See
+the README.
 """
 
 from .core import (

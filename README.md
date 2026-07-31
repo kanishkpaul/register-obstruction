@@ -20,10 +20,10 @@ direct Bn → Hi translation is an empirical, model-dependent question.
 
 > **Status — active research preview.** Classifier validation and aggregate
 > direct-vs-pivot register-fidelity baselines are complete and public here. The
-> proposed cohomological-style *contextual-fraction* obstruction, its linear
-> program, and the correlation analysis have **not yet been run**. The central
-> obstruction hypothesis remains preregistered and untested. The frozen
-> sentences and instrument internals remain private pending a write-up. See
+> preregistered *contextual-fraction* predictor has now been tested privately
+> and **did not survive robustness analysis**; this pilot treats that theoretical
+> claim as falsified. The LP implementation, item-level analysis, frozen
+> sentences, and instrument internals remain private pending a write-up. See
 > [What's public vs. not public](#whats-public-vs-not-public).
 
 ---
@@ -34,14 +34,15 @@ Register is not decoration. In Bengali and Hindi the pronoun and verb
 morphology *force* a choice — you cannot address someone without encoding
 formal / familiar / intimate. English has no grammatical equivalent, so any
 translation that passes through English loses the marking and has to
-re-hallucinate it. The hypothesis under test:
+re-hallucinate it. The study tested the hypothesis:
 
 > Cross-lingual untranslatability of a feature can be quantified as a
 > **contextual obstruction**, and that obstruction predicts where
 > translate-through-English pipelines produce register-inappropriate output.
 
-This is a clean, falsifiable instance of a general question about what pivot
-languages destroy — with a pre-registered kill criterion (below).
+That stronger predictor did not survive the preregistered robustness checks.
+The result is therefore a measurement study of register loss plus an honestly
+reported negative result on the proposed formalization.
 
 ## The instrument (this is the part you can inspect here)
 
@@ -105,7 +106,7 @@ run translation grid:  direct Bn→Hi   vs   pivot Bn→En→Hi
    across local 4-bit models (IndicTrans2, NLLB, general LLMs)
         │
         ▼
-per-item obstruction  ⟶  correlate with downstream register-inappropriateness
+per-item obstruction  ⟶  test correlation with downstream register-inappropriateness
 ```
 
 Everything runs on a single 16 GB Mac (MLX / llama.cpp, 4-bit quants,
@@ -122,8 +123,10 @@ Registered *before* running the analysis, reported either way:
 3. Item-level obstruction correlates (Spearman ρ > 0.3, p < 0.01) with
    downstream register-inappropriateness of final outputs.
 
-**Failure of prediction 3 kills the theory.** That criterion is fixed in
-advance; the analysis has not yet been run.
+**Failure of prediction 3 kills the theory.** That criterion was fixed in
+advance. The primary predictions did not survive robustness analysis, so the
+contextual-fraction predictor is treated as falsified for this pilot. Detailed
+item-level results and analysis machinery remain withheld pending the paper.
 
 ## Try the interface
 
@@ -156,15 +159,16 @@ definitions.
 
 | Public here | Not public here |
 |---|---|
-| Research design and preregistered predictions | The planned contextual-fraction LP implementation |
+| Research design, preregistered predictions, and high-level negative verdict | The contextual-fraction LP implementation and robustness machinery |
 | Register-classifier interface, aggregate validation metrics, and confusion counts | Classifier cue tables and morphological internals |
 | Aggregate direct-vs-pivot register-fidelity results | Frozen sentences, mined triples, and per-item outputs |
 | Private source commit and artifact hashes | Register-restoration system internals |
-| Explicit current phase status and limitations | Contextual-fraction scores and correlations, which have not yet been produced |
+| Explicit current phase status and limitations | Per-item obstruction scores, correlation tables, and unreleased figures |
 
 If you're evaluating this for a role: happy to walk through the private
 instrument and current results directly. Dataset and instrument omissions
-protect publication priority; unfinished analysis is labeled unfinished above.
+protect publication priority; the public claim is deliberately narrower than
+the private analysis.
 
 ## Author
 
